@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cápatornádó</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+</head>
+<body class="w3-light-grey">
+
+    <!-- Page Container -->
+    <div class="w3-content w3-margin-top" style="max-width:1400px;">
+
+    <!-- The Grid -->
+    <div class="w3-row-padding">
+    
+        <!-- Left Column -->
+        <div class="w3-third">
+        
+        <div class="w3-white w3-text-grey w3-card-4" >
+            <div class="w3-display-container">
+                <img src="resources/profilePic{{profilePic}}.png" style="width:100%" alt="Avatar">
+                <div class="w3-display-bottomleft w3-container w3-text-black">
+                    <h2>{{user.vezeteknev}} {{user.keresztnev}}</h2>
+                    <form  action="/profile" method="GET" >
+				    <input value="Kép változtatás" type="submit" style="margin-top:15px">
+			        </form>
+                </div>
+            </div>
+            {{#if tanar}}
+                <buttom type="button" class="btn btn-info newTask" id="newTask">Feladat kiadása</buttom>
+            {{/if}}
+            
+            <hr>
+            <div class="w3-container">
+                <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>{{user.email}}</p>
+                <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>{{user.om}}</p>            
+                <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>{{user.csoport}}</p>
+                <p><i class="fa fa-user fa-fw w3-margin-right w3-large w3-text-teal"></i>{{user.position}}</p>
+                <hr>
+
+                <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Eredmény</b></p>
+                <div class="w3-light-grey w3-round-xlarge w3-small">
+                    <div class="w3-container w3-center w3-round-xlarge w3-teal progress" id="progress" style="width:{{percent}}%">{{percent}}%</div>
+                </div>
+                <br>
+            </div>
+        </div><br>
+
+        <!-- End Left Column -->
+        </div>
+
+        <!-- Right Column -->
+        <div class="w3-twothird">
+        
+        <div class="w3-container w3-card w3-white w3-margin-bottom" style="height:500px">
+            <h3>Pontszámláló</h3>
+            <img src="resources/check.png" id="check">
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Feladatok
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    {{#each feladatok}}
+                    <li> <button class="w3-button" id="feladatokButton{{this}}">{{this}}. feladat </button></li>
+                    {{/each}}
+                </ul>
+            </div> 
+            <div id="quests"></div>
+            <div class="container">
+            <div class="btn-holder">
+            <buttom type="button" class="btn btn-info complete" id="complete">Kész</buttom>
+            </div>
+            </div>
+
+            
+        </div>
+
+        
+
+        <!-- End Right Column -->
+        </div>
+        
+    <!-- End Grid -->
+    </div>
+    
+    <!-- End Page Container -->
+    </div>
+
+    <footer class="w3-container w3-teal w3-center w3-margin-top">
+    <p>Készítette a Cápatornádó team</p>
+    <a href="https://github.com/capatornado/allatjatek"><i class="fa fa-github w3-hover-opacity"></i></a>
+    </footer>
+
+
+   
+    
+
+    <script src="script/default.js"></script>
+
+</body>
+</html>
